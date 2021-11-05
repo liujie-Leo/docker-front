@@ -1,0 +1,31 @@
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <ul>
+    <li v-for="item in users" :key="item.name">{{item.name}}</li>
+  </ul>
+</template>
+
+<script setup lang="ts">
+import axios from 'axios'
+import { onMounted,ref } from 'vue'
+
+let users = ref([])
+
+onMounted(async ()=>{
+  let res:any = await axios.get('http://localhost:3000/api/users')
+  users.value = res.data
+  console.log(res)
+})
+
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
