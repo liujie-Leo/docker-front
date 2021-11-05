@@ -12,7 +12,7 @@ import { onMounted,ref } from 'vue'
 let users = ref([])
 
 onMounted(async ()=>{
-  let res:any = await axios.get('http://localhost:3000/api/users')
+  let res:any = await axios.get('http://localhost:2000/api/users')
   users.value = res.data
   console.log(res)
 })
